@@ -27,7 +27,7 @@ const index = (props) => {
   };
 
   return (
-    <div className='card'>
+    <motion.div whileHover={{ scale: 1.07 }} className='card'>
       <span className='card__title'>{props.title}</span>
       <h3 className='card__artist'>By : {props.artist}</h3>
       <iframe
@@ -53,7 +53,7 @@ const index = (props) => {
         </div>
         <div className='card__tag-customs'>{renderTags()}</div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

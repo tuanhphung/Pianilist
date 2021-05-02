@@ -111,7 +111,7 @@ const Modal = (props) => {
           className='modal__input'
           type='text'
           placeholder='Music Title (required)'
-          maxLength='25'
+          maxLength='40'
           value={title}
           onChange={(event) => setTitle(event.target.value)}
           required
@@ -120,7 +120,7 @@ const Modal = (props) => {
           className='modal__input'
           type='text'
           placeholder='Artist'
-          maxLength='25'
+          maxLength='40'
           value={artist}
           onChange={(event) => setArtist(event.target.value)}
         />
