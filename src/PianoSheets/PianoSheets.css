@@ -1,0 +1,42 @@
+.piano-sheets {
+  position: relative;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.piano-sheets__list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  background-position: left;
+  background-color: #f6f8f9;
+  width: 90%;
+  border-radius: 1em;
+}
+
+.piano-sheets__all,
+.piano-sheets__add {
+  font-weight: 600;
+  font-size: 15px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 41px;
+  left: 80%;
+}
+
+.piano-sheets__all img,
+.piano-sheets__add img {
+  height: 50px;
+  width: 90px;
+  padding: 7px;
+}
+
+.piano-sheets__all,
+.piano-sheets__add img:hover {
+  cursor: pointer;
+}

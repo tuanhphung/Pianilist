@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #ffff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.main-title {
+  height: 5%;
+  margin: 50px;
+  font-size: 35px;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+}
+
+.button {
+  margin: 20px;
+  top: 50%;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 0.3em;
+  background-color: black;
+  color: white;
+}
+
+.button:hover {
+  cursor: pointer;
+}

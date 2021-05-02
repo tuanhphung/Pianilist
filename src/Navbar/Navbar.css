@@ -1,0 +1,10 @@
+.navbar {
+  font-size: 35px;
+  padding: 20px;
+  margin: 20px 0 0 100px;
+}
+.navbar:visited,
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+}

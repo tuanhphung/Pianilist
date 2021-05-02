@@ -1,0 +1,128 @@
+.card {
+  font-family: "Bebas Neue", cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  background-color: #d1d3da;
+  height: 450px;
+  width: 20%;
+  border-radius: 0.5em;
+  text-align: center;
+}
+
+.card__title {
+  font-family: inherit;
+  font-size: 30px;
+  background-color: inherit;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.card__artist {
+  font-family: inherit;
+  font-size: 23px;
+  background-color: inherit;
+}
+
+.card__video {
+  margin: 10px;
+  height: 200px;
+  width: 300px;
+}
+
+.card__sheet-links {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+}
+
+.card__sheet-links img {
+  margin: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: inherit;
+}
+
+.card__sheet-links a {
+  font-family: inherit;
+  font-size: 20px;
+  text-decoration: none;
+  background-color: inherit;
+}
+.card__sheet-links a:any-link,
+.card__sheet-links a:visited {
+  color: inherit;
+}
+
+/*card tags */
+.card__tags {
+  font-family: inherit;
+  margin: 20px;
+  background-color: inherit;
+}
+
+.card__tag-price {
+  display: flex;
+  justify-content: center;
+  background-color: inherit;
+}
+
+.card__tag-price a {
+  text-decoration: none;
+  background-color: inherit;
+}
+
+.card__tag-price--free {
+  margin: 5px;
+  padding: 3px;
+  border-radius: 0.5em;
+  color: #ffff;
+  background-color: #2ecc40;
+}
+
+.card__tag-price--paid {
+  margin: 5px;
+  padding: 3px;
+  border-radius: 0.5em;
+  color: #ffff;
+  background-color: #ff851b;
+}
+
+.card__tag-customs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+  background-color: inherit;
+}
+
+.card__tag-custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  margin: 10px;
+  width: 80px;
+  background-color: gray;
+  border-radius: 0.5em;
+  color: #ffff;
+}
+
+.tag-hover:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1560px) {
+  .card {
+    width: 40% !important;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .card {
+    width: 100% !important;
+  }
+}

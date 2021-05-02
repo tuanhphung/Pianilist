@@ -1,0 +1,26 @@
+.landing {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing__get-started {
+  position: absolute;
+  top: 50%;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 0.3em;
+  background-color: black;
+}
+
+.landing__get-started a {
+  background-color: inherit;
+  color: white;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.landing__get-started:hover {
+  cursor: pointer;
+}
