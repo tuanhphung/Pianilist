@@ -3,21 +3,13 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { changeFilter } from "../../utils/actions";
 import { motion } from "framer-motion";
+import firebase from "../../utils/firebase";
 import noteIcon from "../../assets/music-note.svg";
 import editIcon from "../../assets/edit.svg";
+import binIcon from "../../assets/bin.svg";
 import "./Card.css";
 
 const index = (props) => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 2,
-      },
-    },
-  };
-
   const renderTags = () => {
     // render tags only if there is at least one.
     if (props.tags) {
@@ -27,9 +19,20 @@ const index = (props) => {
     }
   };
 
+  const removeSheet = () => {
+    let confirm = window.confirm("Are you sure you want to remove?");
+    if (confirm) {
+      //reference to a specific record on the Sheets table identified by id on database.
+      const sheetRef = firebase.database().ref("Sheets").child(props.id);
+      sheetRef.remove();
+    }
+    return;
+  };
+
   return (
     <motion.div whileHover={{ scale: 1.07 }} className='card'>
       <img src={editIcon} className='card__edit' />
+      <img src={binIcon} className='card__bin' onClick={removeSheet} />
       <span className='card__title'>{props.title}</span>
       <h3 className='card__artist'>By : {props.artist}</h3>
       <iframe

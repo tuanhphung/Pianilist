@@ -27,13 +27,14 @@ const PianoSheets = (props) => {
       props.addSheet(list.reverse());
     });
   }, []);
-
+  console.log(props.sheets);
   const renderList = () => {
     return props.sheets.map((piece) => {
       //piano piece for 'paid' and 'free' have defined css class
       let priceClass = piece.price == "free" ? "free" : "paid";
       return (
         <Card
+          id={piece.id}
           title={piece.title}
           artist={piece.artist}
           videoId={piece.videoId}

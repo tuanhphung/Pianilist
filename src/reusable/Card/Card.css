@@ -13,16 +13,28 @@
   text-align: center;
 }
 
+.card__bin,
 .card__edit {
   position: absolute;
   background-color: inherit;
-  top: 0;
-  left: 1%;
   height: 30px;
   width: 30px;
 }
+.card__bin,
 .card__edit:hover {
   cursor: pointer;
+  height: 30px;
+  width: 30px;
+}
+
+.card__edit {
+  top: 0;
+  left: 1%;
+}
+
+.card__bin {
+  top: 0;
+  right: 0;
 }
 
 .card__title {
