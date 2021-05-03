@@ -16,11 +16,11 @@ const PriceSheets = (props) => {
   // filter records from database based on price.
   const renderFiltered = () => {
     const filtered = props.sheets.filter((sheet) => {
-      return sheet.price == props.filter;
+      return sheet.price === props.filter;
     });
     return filtered.map((piece) => {
       //piano piece for 'paid' and 'free' have defined css class
-      let priceClass = piece.price == "free" ? "free" : "paid";
+      let priceClass = piece.price === "free" ? "free" : "paid";
       return (
         <Card
           title={piece.title}
@@ -42,12 +42,12 @@ const PriceSheets = (props) => {
       transition={{ duration: 1 }}
     >
       <span className='main-title'>
-        {props.filter == "free" ? "Free" : "Paid"} Sheets
+        {props.filter === "free" ? "Free" : "Paid"} Sheets
       </span>
 
       <div className='piano-sheets__all icon'>
         <NavLink to='/sheets'>
-          <img src={sheetsIcon} />
+          <img alt='sheets' src={sheetsIcon} />
         </NavLink>
         All
       </div>

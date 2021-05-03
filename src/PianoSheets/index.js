@@ -27,11 +27,10 @@ const PianoSheets = (props) => {
       props.addSheet(list.reverse());
     });
   }, []);
-  console.log(props.sheets);
   const renderList = () => {
     return props.sheets.map((piece) => {
       //piano piece for 'paid' and 'free' have defined css class
-      let priceClass = piece.price == "free" ? "free" : "paid";
+      let priceClass = piece.price === "free" ? "free" : "paid";
       return (
         <Card
           id={piece.id}
@@ -56,7 +55,7 @@ const PianoSheets = (props) => {
     >
       <span className='main-title'>All Piano Sheets</span>
       <div className='piano-sheets__add icon'>
-        <img src={addIcon} onClick={props.toggleModal} />
+        <img alt='add_icon' src={addIcon} onClick={props.toggleModal} />
         <p className='piano-sheets__add-label'>New Sheet</p>
       </div>
       <div className='piano-sheets__list'>{renderList()}</div>

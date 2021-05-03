@@ -17,9 +17,30 @@ const getFilterReducer = (filter = "", action) => {
       return filter;
   }
 };
+
+const toggleEditModalReducer = (isOpen = false, action) => {
+  switch (action.type) {
+    case "TOGGLE_EDIT":
+      return !isOpen;
+    default:
+      return isOpen;
+  }
+};
+
+const getSheetIdReducer = (id = null, action) => {
+  switch (action.type) {
+    case "GET_SHEETID":
+      return action.payload;
+    default:
+      return id;
+  }
+};
+
 const allReducers = combineReducers({
   sheets: getSheetsReducer,
   currentFilter: getFilterReducer,
+  isEditModalOpen: toggleEditModalReducer,
+  sheetId: getSheetIdReducer,
 });
 
 export default allReducers;

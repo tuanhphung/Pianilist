@@ -14,3 +14,17 @@ export const changeFilter = (filter) => {
     payload: filter,
   };
 };
+
+export const toggleEdit = (isOpen) => {
+  return {
+    type: "TOGGLE_EDIT",
+    payload: isOpen,
+  };
+};
+
+export const getSheetId = (id) => {
+  return {
+    type: "GET_SHEETID",
+    payload: id,
+  };
+};
