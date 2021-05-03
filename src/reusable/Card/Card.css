@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   font-family: "Bebas Neue", cursive;
   display: flex;
   flex-direction: column;
@@ -10,6 +11,18 @@
   width: 20%;
   border-radius: 0.5em;
   text-align: center;
+}
+
+.card__edit {
+  position: absolute;
+  background-color: inherit;
+  top: 0;
+  left: 1%;
+  height: 30px;
+  width: 30px;
+}
+.card__edit:hover {
+  cursor: pointer;
 }
 
 .card__title {
@@ -61,6 +74,7 @@
 .card__tags {
   font-family: inherit;
   margin: 20px;
+  width: 90%;
   background-color: inherit;
 }
 
@@ -93,9 +107,10 @@
 
 .card__tag-customs {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   margin-top: 10px;
+  width: 100%;
   background-color: inherit;
 }
 
@@ -126,3 +141,13 @@
     width: 100% !important;
   }
 }
+
+/* 
+.card__tag-customs {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+  background-color: inherit;
+}
+*/

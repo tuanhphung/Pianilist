@@ -56,7 +56,7 @@ const PianoSheets = (props) => {
       <span className='main-title'>All Piano Sheets</span>
       <div className='piano-sheets__add icon'>
         <img src={addIcon} onClick={props.toggleModal} />
-        New
+        <p className='piano-sheets__add-label'>New Sheet</p>
       </div>
       <div className='piano-sheets__list'>{renderList()}</div>
     </motion.div>

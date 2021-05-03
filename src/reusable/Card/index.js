@@ -2,8 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { changeFilter } from "../../utils/actions";
-import noteIcon from "../../assets/music-note.svg";
 import { motion } from "framer-motion";
+import noteIcon from "../../assets/music-note.svg";
+import editIcon from "../../assets/edit.svg";
 import "./Card.css";
 
 const index = (props) => {
@@ -21,13 +22,14 @@ const index = (props) => {
     // render tags only if there is at least one.
     if (props.tags) {
       return props.tags.map((tag) => {
-        return <span className='card__tag-custom tag-hover'>{tag}</span>;
+        return <div className='card__tag-custom tag-hover'>{tag}</div>;
       });
     }
   };
 
   return (
     <motion.div whileHover={{ scale: 1.07 }} className='card'>
+      <img src={editIcon} className='card__edit' />
       <span className='card__title'>{props.title}</span>
       <h3 className='card__artist'>By : {props.artist}</h3>
       <iframe
@@ -51,6 +53,7 @@ const index = (props) => {
             </span>
           </NavLink>
         </div>
+
         <div className='card__tag-customs'>{renderTags()}</div>
       </div>
     </motion.div>
