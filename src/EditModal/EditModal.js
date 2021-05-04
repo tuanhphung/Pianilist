@@ -55,8 +55,8 @@ const EditModal = (props) => {
 
   //trim URL link down to YouTube's video ID only
   const trimURLtoID = (url) => {
-    const videoID = url.split("").slice(17).join("");
-    return videoID;
+    const videoID = url.split("=");
+    return videoID[1];
   };
 
   //update database
