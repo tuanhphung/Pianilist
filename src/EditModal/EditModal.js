@@ -33,7 +33,7 @@ const EditModal = (props) => {
       const record = response.val();
       setTitle(record.title);
       setArtist(record.artist);
-      setVideoLink(`https://youtu.be/${record.videoId}`);
+      setVideoLink(`https://www.youtube.com/watch?v=${record.videoId}`);
       setSheetLink(record.link);
       setTags(record.tags);
     } else console.log("NO VALUE");
@@ -80,7 +80,7 @@ const EditModal = (props) => {
         });
         //close modal after update
         props.toggleEdit(props.isModalOpen);
-      } else console.log("cancelled");
+      } else return;
     } else alert("Required fields must be entered");
   };
 

@@ -27,6 +27,7 @@ const PianoSheets = (props) => {
       props.addSheet(list.reverse());
     });
   }, []);
+
   const renderList = () => {
     return props.sheets.map((piece) => {
       //piano piece for 'paid' and 'free' have defined css class

@@ -3,13 +3,16 @@ import Modals from "react-modal";
 import firebase from "../../utils/firebase";
 import { motion } from "framer-motion";
 import { customStyles } from "./customStyles";
+import axios from "axios";
 import "./Modal.css";
 
 Modals.setAppElement("#root");
 
+/* NOTE - Some code have been commented out in case the use of 'noembed' API stops working / reaches its API limite. DONT DELETE. */
+
 const Modal = (props) => {
-  const [title, setTitle] = useState("");
-  const [artist, setArtist] = useState("");
+  //const [title, setTitle] = useState("");
+  //const [artist, setArtist] = useState("");
   const [videoLink, setVideoLink] = useState("");
   const [sheetLink, setSheetLink] = useState("");
   const [price, setPrice] = useState("");
@@ -19,12 +22,6 @@ const Modal = (props) => {
   //toggle modal
   const closeModal = () => {
     props.toggleModal();
-  };
-
-  const getRecord = async () => {
-    const recordRef = firebase.database().ref("Sheets").child(props.id);
-    const response = await recordRef.get();
-    console.log(response.val());
   };
 
   // add a tag to a tag array
@@ -56,15 +53,15 @@ const Modal = (props) => {
 
   //valide modal form
   const validate = () => {
-    if (title === "" || sheetLink === "" || videoLink === "" || price === "") {
+    if (sheetLink === "" || videoLink === "" || price === "") {
       return false;
     } else return true;
   };
 
   // clear values
   const clearValues = () => {
-    setTitle("");
-    setArtist("");
+    // setTitle("");
+    // setArtist("");
     setVideoLink("");
     setSheetLink("");
     setPrice("");
@@ -77,29 +74,34 @@ const Modal = (props) => {
     clearValues();
   };
 
-  const postToDB = () => {
+  const postToDB = async () => {
     //validate forms
     const isValidated = validate();
 
     if (isValidated) {
-      let confirm = window.confirm(`Add ${title} to sheets?`);
+      let confirm = window.confirm(`Add to sheets?`);
       if (confirm) {
-        //trim URL link down to YouTube's video ID only
+        // use noembed API to get video title and author with link
+        let response = await axios.get(`https://noembed.com/embed?url=${videoLink}`);
+        let embeddedVideo = response.data;
+        console.log(embeddedVideo);
+
+        //--------trim URL link down to YouTube's video ID only
         const videoID = trimURLtoID(videoLink);
-        //refer to 'Sheets' table on RT database
+        //--------refer to 'Sheets' table on RT database
         const databaseSheetRef = firebase.database().ref("Sheets");
-        //make a record (object) for database
+        //--------/make a record (object) for database
         const sheetRecord = {
-          title: title,
-          artist: artist,
+          title: embeddedVideo.title,
+          artist: embeddedVideo.author_name,
           videoId: videoID,
           link: sheetLink,
           price: price,
           tags: tags,
         };
-        //push record to the database
+        //--------push record to the database
         databaseSheetRef.push(sheetRecord);
-        //clear values of modal
+        //--------clear values of modal
         clearValues();
         closeModal();
       } else return;
@@ -112,23 +114,6 @@ const Modal = (props) => {
     <Modals isOpen={props.isOpen} style={customStyles}>
       <h1>New Piano Sheet</h1>
       <motion.div className='modal' initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <input
-          className='modal__input'
-          type='text'
-          placeholder='Music Title (required)'
-          maxLength='40'
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          required
-        />
-        <input
-          className='modal__input'
-          type='text'
-          placeholder='Artist'
-          maxLength='40'
-          value={artist}
-          onChange={(event) => setArtist(event.target.value)}
-        />
         <input
           className='modal__input'
           type='text'
@@ -186,3 +171,26 @@ const Modal = (props) => {
 };
 
 export default Modal;
+
+/* 
+
+------------------- INPUT FOR TITLE AND ARTIST -------------------
+ <input
+          className='modal__input'
+          type='text'
+          placeholder='Music Title (required)'
+          maxLength='40'
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+          required
+        />
+        <input
+          className='modal__input'
+          type='text'
+          placeholder='Artist'
+          maxLength='40'
+          value={artist}
+          onChange={(event) => setArtist(event.target.value)}
+        />
+
+*/
