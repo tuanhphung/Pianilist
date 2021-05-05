@@ -6,15 +6,25 @@
   align-items: center;
 }
 
-.piano-sheets__list {
+/*Dark and Light Themes*/
+
+.piano-sheets__list--light,
+.piano-sheets__list--dark {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   padding: 10px;
   background-position: left;
-  background-color: #f6f8f9;
   width: 90%;
   border-radius: 1em;
+}
+
+.piano-sheets__list--light {
+  background-color: #f6f8f9;
+}
+
+.piano-sheets__list--dark {
+  background-color: #464343;
 }
 
 .piano-sheets__all,
@@ -30,10 +40,18 @@
   left: 80%;
 }
 
-.piano-sheets__add-label {
+.piano-sheets__add-label--light,
+.piano-sheets__add-label--dark {
   width: 80px;
 }
+.piano-sheets__add-label--light {
+  color: black;
+}
 
+.piano-sheets__add-label--dark {
+  color: white;
+}
+/*-------------------------*/
 .piano-sheets__all img,
 .piano-sheets__add img {
   height: 50px;

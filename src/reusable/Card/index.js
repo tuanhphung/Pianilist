@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { changeFilter, toggleEdit, getSheetId } from "../../utils/actions";
@@ -7,11 +7,15 @@ import firebase from "../../utils/firebase";
 import noteIcon from "../../assets/music-note.svg";
 import editIcon from "../../assets/edit.svg";
 import binIcon from "../../assets/bin.svg";
+import editIcon_white from "../../assets/edit_white.svg";
+import noteIcon_white from "../../assets/music-note_white.svg";
+import binIcon_white from "../../assets/bin_white.svg";
 import "./Card.css";
 
 const mapStateToProps = (state) => {
   return {
     isModalOpen: state.isEditModalOpen,
+    darkMode: state.darkMode,
   };
 };
 
@@ -43,9 +47,22 @@ const Card = (props) => {
   };
 
   return (
-    <motion.div whileHover={{ scale: 1.07 }} className='card'>
-      <img alt='edit_icon' src={editIcon} className='card__edit' onClick={editSheet} />
-      <img alt='bin_icon' src={binIcon} className='card__bin' onClick={removeSheet} />
+    <motion.div
+      whileHover={{ scale: 1.07 }}
+      className={`card--${props.darkMode ? "dark" : "light"}`}
+    >
+      <img
+        alt='edit_icon'
+        src={props.darkMode ? editIcon_white : editIcon}
+        className='card__edit'
+        onClick={editSheet}
+      />
+      <img
+        alt='bin_icon'
+        src={props.darkMode ? binIcon_white : binIcon}
+        className='card__bin'
+        onClick={removeSheet}
+      />
       <span className='card__title'>{props.title}</span>
       <h3 className='card__artist'>By : {props.artist}</h3>
       <iframe
@@ -55,7 +72,7 @@ const Card = (props) => {
         src={`https://www.youtube.com/embed/${props.videoId}`}
       ></iframe>
       <div className='card__sheet-links'>
-        <img alt='note_icon' src={noteIcon} />
+        <img alt='note_icon' src={props.darkMode ? noteIcon_white : noteIcon} />
         <a href={props.link} target='_blank' rel='noreferrer'>
           Sheet Music
         </a>

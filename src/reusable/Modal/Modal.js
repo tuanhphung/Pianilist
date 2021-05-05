@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modals from "react-modal";
+import { connect } from "react-redux";
 import firebase from "../../utils/firebase";
 import { motion } from "framer-motion";
 import { customStyles } from "./customStyles";
@@ -9,8 +10,23 @@ import "./Modal.css";
 Modals.setAppElement("#root");
 
 /* NOTE - Some code have been commented out in case the use of 'noembed' API stops working / reaches its API limite. DONT DELETE. */
+/* 
+   backgroundColor: "#f6f8f9",
+    color: "black",
+*/
+const mapStateToProps = (state) => {
+  return {
+    darkMode: state.darkMode,
+  };
+};
 
 const Modal = (props) => {
+  // change modal background colour / colour depending on dark or light theme
+  customStyles.content.backgroundColor = props.darkMode ? "black" : "#f6f8f9";
+  customStyles.content.color = props.darkMode ? "white" : "black";
+  // modal inputs dark and light theme
+  let classTheme = props.darkMode ? "modal__input--dark" : "modal__input--light";
+
   //const [title, setTitle] = useState("");
   //const [artist, setArtist] = useState("");
   const [videoLink, setVideoLink] = useState("");
@@ -113,9 +129,13 @@ const Modal = (props) => {
   return (
     <Modals isOpen={props.isOpen} style={customStyles}>
       <h1>New Piano Sheet</h1>
-      <motion.div className='modal' initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <motion.div
+        className={`modal--${props.darkMode ? "dark" : "light"}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <input
-          className='modal__input'
+          className={classTheme}
           type='text'
           placeholder='Video Link (required)'
           value={videoLink}
@@ -123,7 +143,7 @@ const Modal = (props) => {
         />
 
         <input
-          className='modal__input'
+          className={classTheme}
           type='text'
           placeholder='Link to Sheet (required)'
           value={sheetLink}
@@ -132,7 +152,7 @@ const Modal = (props) => {
 
         <select
           required
-          className='modal__input'
+          className={classTheme}
           value={price}
           onChange={(event) => setPrice(event.target.value)}
         >
@@ -145,7 +165,7 @@ const Modal = (props) => {
 
         <form className='modal__tag-form' onSubmit={addTagToArray}>
           <input
-            className='modal__input'
+            className={classTheme}
             type='text'
             placeholder='Tags (up to 6)'
             value={tag}
@@ -170,7 +190,7 @@ const Modal = (props) => {
   );
 };
 
-export default Modal;
+export default connect(mapStateToProps)(Modal);
 
 /* 
 

@@ -1,4 +1,7 @@
 .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 35px;
   padding: 20px;
   margin: 20px 0 0 100px;
@@ -8,3 +11,39 @@
   text-decoration: none;
   color: inherit;
 }
+.navbar_toggle-theme {
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+}
+
+.navbar_toggle-theme:hover {
+  cursor: pointer;
+}
+
+/*  light mode
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 35px;
+  padding: 20px;
+  margin: 20px 0 0 100px;
+}
+.navbar:visited,
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+}
+.navbar_toggle-theme {
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+}
+
+.navbar_toggle-theme:hover {
+  cursor: pointer;
+}
+
+
+*/

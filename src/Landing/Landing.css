@@ -5,21 +5,32 @@
   align-items: center;
 }
 
-.landing__get-started {
+/*dark and light themes */
+
+.landing__get-started--light,
+.landing__get-started--dark {
   position: absolute;
   top: 50%;
   padding: 10px;
   font-size: 15px;
   border-radius: 0.3em;
-  background-color: black;
 }
 
-.landing__get-started a {
-  background-color: inherit;
+.landing__get-started--light {
+  background-color: black;
   color: white;
+}
+
+.landing__get-started--dark {
+  background-color: white;
+  color: black;
+}
+.landing__get-started--dark a,
+.landing__get-started--light a {
   font-size: 15px;
   text-decoration: none;
 }
+/*-------------------------*/
 
 .landing__get-started:hover {
   cursor: pointer;

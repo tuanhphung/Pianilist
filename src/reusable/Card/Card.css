@@ -1,4 +1,5 @@
-.card {
+.card--light,
+.card--dark {
   position: relative;
   font-family: "Bebas Neue", cursive;
   display: flex;
@@ -6,11 +7,18 @@
   align-items: center;
   margin: 10px;
   padding: 10px;
-  background-color: #d1d3da;
   height: 450px;
   width: 20%;
   border-radius: 0.5em;
   text-align: center;
+}
+
+.card--light {
+  background-color: #d1d3da;
+}
+
+.card--dark {
+  background-color: black;
 }
 
 .card__bin,

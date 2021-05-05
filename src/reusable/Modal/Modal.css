@@ -1,20 +1,30 @@
-.modal {
+/*Dark and Light Themes*/
+
+.modal--light,
+.modal--dark {
   margin: 15px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f6f8f9;
   width: 90%;
   height: 80%;
   border-radius: 0.5em;
 }
 
+.modal--light {
+  background-color: #f6f8f9;
+}
+
+.modal--dark {
+  background-color: #464343;
+}
 .modal__close:hover {
   cursor: pointer;
 }
 
-.modal__input {
+.modal__input--light,
+.modal__input--dark {
   width: 60%;
   margin: 20px 0;
   padding: 10px;
@@ -23,6 +33,21 @@
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   text-align: center;
 }
+
+.modal__input--light {
+  background-color: white;
+  color: black;
+}
+
+.modal__input--dark {
+  background-color: black;
+}
+
+.modal__input--dark::placeholder {
+  color: white;
+}
+
+/*-----------------------------------------------*/
 
 .modal__tag-form {
   background-color: inherit;

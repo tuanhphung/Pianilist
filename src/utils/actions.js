@@ -28,3 +28,10 @@ export const getSheetId = (id) => {
     payload: id,
   };
 };
+
+export const toggleTheme = (isOpen) => {
+  return {
+    type: "TOGGLE_THEME",
+    payload: isOpen,
+  };
+};

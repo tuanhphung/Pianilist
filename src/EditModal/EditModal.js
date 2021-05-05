@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
   return {
     isModalOpen: state.isEditModalOpen,
     sheetId: state.sheetId,
+    darkMode: state.darkMode,
   };
 };
 
@@ -25,6 +26,12 @@ const EditModal = (props) => {
   const [tag, setTag] = useState(""); //single tag
   const [tags, setTags] = useState([]); // array of tag
 
+  // change modal background colour / colour depending on dark or light theme
+  customStyles.content.backgroundColor = props.darkMode ? "black" : "#f6f8f9";
+  customStyles.content.color = props.darkMode ? "white" : "black";
+  // modal inputs dark and light theme
+  let classTheme = props.darkMode ? "modal__input--dark" : "modal__input--light";
+
   //get specific record from Sheets table from database
   useEffect(async () => {
     if (props.sheetId !== null) {
@@ -36,7 +43,7 @@ const EditModal = (props) => {
       setVideoLink(`https://www.youtube.com/watch?v=${record.videoId}`);
       setSheetLink(record.link);
       setTags(record.tags);
-    } else console.log("NO VALUE");
+    } else return;
   }, [props.sheetId]);
 
   // show tags added on pressing enter
@@ -101,9 +108,13 @@ const EditModal = (props) => {
   return (
     <Modals isOpen={props.isModalOpen} style={customStyles}>
       <h1>Edit Sheet</h1>
-      <motion.div className='modal' initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <motion.div
+        className={`modal--${props.darkMode ? "dark" : "light"}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <input
-          className='modal__input'
+          className={classTheme}
           type='text'
           placeholder='Music Title (required)'
           maxLength='40'
@@ -112,7 +123,7 @@ const EditModal = (props) => {
           onChange={(e) => setTitle(e.target.value)}
         />
         <input
-          className='modal__input'
+          className={classTheme}
           type='text'
           placeholder='Artist'
           maxLength='40'
@@ -120,7 +131,7 @@ const EditModal = (props) => {
           onChange={(e) => setArtist(e.target.value)}
         />
         <input
-          className='modal__input'
+          className={classTheme}
           type='text'
           placeholder='Video Link (required)'
           value={videoLink}
@@ -128,7 +139,7 @@ const EditModal = (props) => {
         />
 
         <input
-          className='modal__input'
+          className={classTheme}
           type='text'
           placeholder='Link to Sheet (required)'
           value={sheetLink}
@@ -137,7 +148,7 @@ const EditModal = (props) => {
 
         <select
           required
-          className='modal__input'
+          className={classTheme}
           value={price}
           onChange={(event) => setPrice(event.target.value)}
         >
@@ -150,7 +161,7 @@ const EditModal = (props) => {
 
         <form className='modal__tag-form' onSubmit={addTagToArray}>
           <input
-            className='modal__input'
+            className={classTheme}
             type='text'
             placeholder='Tags (up to 6)'
             maxLength='10'

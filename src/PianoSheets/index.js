@@ -4,12 +4,14 @@ import { connect } from "react-redux";
 import { addSheet } from "../utils/actions";
 import Card from "../reusable/Card";
 import addIcon from "../assets/add.svg";
+import addIcon_white from "../assets/add_white.svg";
 import "./PianoSheets.css";
 import { motion } from "framer-motion";
 
 const mapStateToProps = (state) => {
   return {
     sheets: state.sheets,
+    darkMode: state.darkMode,
   };
 };
 
@@ -56,10 +58,18 @@ const PianoSheets = (props) => {
     >
       <span className='main-title'>All Piano Sheets</span>
       <div className='piano-sheets__add icon'>
-        <img alt='add_icon' src={addIcon} onClick={props.toggleModal} />
-        <p className='piano-sheets__add-label'>New Sheet</p>
+        <img
+          alt='add_icon'
+          src={props.darkMode ? addIcon_white : addIcon}
+          onClick={props.toggleModal}
+        />
+        <p className={`piano-sheets__add-label--${props.darkMode ? "dark" : "light"}`}>
+          New Sheet
+        </p>
       </div>
-      <div className='piano-sheets__list'>{renderList()}</div>
+      <div className={`piano-sheets__list--${props.darkMode ? "dark" : "light"}`}>
+        {renderList()}
+      </div>
     </motion.div>
   );
 };

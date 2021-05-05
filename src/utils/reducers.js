@@ -27,6 +27,15 @@ const toggleEditModalReducer = (isOpen = false, action) => {
   }
 };
 
+const toggleThemeReducer = (isOpen = false, action) => {
+  switch (action.type) {
+    case "TOGGLE_THEME":
+      return !isOpen;
+    default:
+      return isOpen;
+  }
+};
+
 const getSheetIdReducer = (id = null, action) => {
   switch (action.type) {
     case "GET_SHEETID":
@@ -41,6 +50,7 @@ const allReducers = combineReducers({
   currentFilter: getFilterReducer,
   isEditModalOpen: toggleEditModalReducer,
   sheetId: getSheetIdReducer,
+  darkMode: toggleThemeReducer,
 });
 
 export default allReducers;

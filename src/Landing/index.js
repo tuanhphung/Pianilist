@@ -1,9 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import { connect } from "react-redux";
 import "./Landing.css";
 
-const Landing = () => {
+const mapStateToProps = (state) => {
+  return {
+    darkMode: state.darkMode,
+  };
+};
+
+const Landing = (props) => {
+  const theme = props.darkMode ? "dark" : "light";
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -23,11 +31,11 @@ const Landing = () => {
     >
       <h1 className='main-title'>Piano Sheets In One Place</h1>
       Add piano sheets you want to learn from anywhere
-      <div className='landing__get-started'>
+      <div className={`landing__get-started--${props.darkMode ? "dark" : "light"}`}>
         <NavLink to='/sheets'>Get Started</NavLink>
       </div>
     </motion.div>
   );
 };
 
-export default Landing;
+export default connect(mapStateToProps)(Landing);

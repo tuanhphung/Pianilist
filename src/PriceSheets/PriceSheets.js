@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import sheetsIcon from "../assets/sheet-music.svg";
+import sheetsIcon_white from "../assets/sheet-music_white.svg";
 import Card from "../reusable/Card";
 
 const mapStateToProps = (state) => {
   return {
     sheets: state.sheets,
     filter: state.currentFilter,
+    darkMode: state.darkMode,
   };
 };
 
@@ -47,11 +49,13 @@ const PriceSheets = (props) => {
 
       <div className='piano-sheets__all icon'>
         <NavLink to='/sheets'>
-          <img alt='sheets' src={sheetsIcon} />
+          <img alt='sheets' src={props.darkMode ? sheetsIcon_white : sheetsIcon} />
         </NavLink>
         All
       </div>
-      <div className='piano-sheets__list'>{renderFiltered()}</div>
+      <div className={`piano-sheets__list--${props.darkMode ? "dark" : "light"}`}>
+        {renderFiltered()}
+      </div>
     </motion.div>
   );
 };

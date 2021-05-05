@@ -1,7 +1,8 @@
 * {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background-color: #ffff;
+  background-color: inherit;
+  color: inherit;
 }
 
 .container {
@@ -19,7 +20,7 @@
 .icon {
   height: 50px;
   width: 50px;
-  background-color: inherit;
+  color: white;
 }
 
 .button {
