@@ -151,13 +151,15 @@
 }
 
 @media only screen and (max-width: 1560px) {
-  .card {
+  .card--light,
+  .card--dark {
     width: 40% !important;
   }
 }
 
 @media only screen and (max-width: 850px) {
-  .card {
+  .card--light,
+  .card--dark {
     width: 100% !important;
   }
 }
